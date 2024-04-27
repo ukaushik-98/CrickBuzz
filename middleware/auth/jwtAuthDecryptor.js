@@ -1,4 +1,4 @@
-const jwt = 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 const { get, has } = require('lodash');
 const { JWT } = require('../../config');
 
@@ -9,17 +9,17 @@ function decryptToken(token) {
 
     const bearer = token.split(' ');
 
-    if (get(bearer, '[0]', '') !== 'BEARER') {
+    if (get(bearer, '[0]', '') !== 'Bearer') {
         throw new Error('Invalid token format');
     }
 
-    const decoded = jwt.verify(get(token, '[1]', ''), JWT.JWTSECRET);
+    const decoded = jwt.verify(get(bearer, '[1]', ''), JWT.JWTSECRET);
 
-    if (!has(user, decoded)) {
+    if (!has(decoded, 'user')) {
         throw new Error('Failed to fetch user');
     }
 
     return get(decoded, 'user');
 }
 
-module.exports.function = decryptToken;
+module.exports = decryptToken;

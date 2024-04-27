@@ -1,6 +1,6 @@
 const decryptToken = require('./jwtAuthDecryptor');
 
-module.exports.function =  (req, res, next) => {
+function authMiddleWare(req, res, next) {
     const token = req.header('Authorization');
 
     try {
@@ -13,3 +13,5 @@ module.exports.function =  (req, res, next) => {
         });
     }
 } 
+
+module.exports = authMiddleWare;
