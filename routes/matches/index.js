@@ -3,8 +3,11 @@ const auth = require('../../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', auth, async(req,res) => {res.send('MATCHES ROUTE')})
 
-router.post('/matches', auth, async(req,res) => {res.send('CREATING MATCHES')})
+router.post('/matches', auth, 
+    async(req,res) => {
+        
+    }
+)
 
 module.exports = router;
