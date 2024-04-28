@@ -1,4 +1,4 @@
-const decryptToken = require('./jwtAuthDecryptor');
+const decryptToken = require('./decryptor/jwtAuthDecryptor');
 
 function authMiddleWare(req, res, next) {
     const token = req.header('Authorization');

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { get, has } = require('lodash');
-const { JWT } = require('../../config');
+const { JWT } = require('../../../config');
 
 function decryptToken(token) {
     if (!token) {
